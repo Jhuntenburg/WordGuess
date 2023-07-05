@@ -1,8 +1,6 @@
 package com.github.zipcodewilmington;
 
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -16,7 +14,7 @@ import java.util.Scanner;
 
 public class Hangman {
     private static String correctWord;// will be the word selected from an array
-    private static int remainingTries;// this will count down num of tries
+    private static int totalTries;// this will count down num of tries
     private static ArrayList<String> word = new ArrayList<>();//list of possible words
     private static String used = ""; //place for already selected letters to be stored/displayed
 
@@ -96,15 +94,15 @@ public class Hangman {
         switch (choice) {
             case 1:
                 System.out.println("You have chosen easy.");
-                remainingTries = 10;
+                totalTries = 10;
                 break;
             case 2:
                 System.out.println("You have chosen Intermediate.");
-                remainingTries = 7;
+                totalTries = 7;
                 break;
             case 3:
                 System.out.println("You have chosen Hard.");
-                remainingTries = 5;
+                totalTries = 5;
                 break;
         }
         System.out.printf("Do you know how to play?\n1 - Yes\n2 - No\n");
@@ -148,7 +146,7 @@ public class Hangman {
         System.out.println("");
         int usedTries = 0;
 
-        while (usedTries < remainingTries) { //while the user has tries remaining this code runs
+        while (usedTries < totalTries) { //while the user has tries remaining this code runs
             String guess = scan.next().toUpperCase(); //makes all input upper case for comparing in the word bank
             guess = guess.substring(0, 1);
 
@@ -194,7 +192,7 @@ public class Hangman {
                     System.out.print(word.get(i));
                 }
                 usedTries ++;
-                System.out.println("\nIncorrect. Tries used: " + usedTries + "/" + remainingTries);
+                System.out.println("\nIncorrect. Tries used: " + usedTries + "/" + totalTries);
                 System.out.println("Letters used:" + used);
 
             }
@@ -203,7 +201,7 @@ public class Hangman {
                     System.out.print(word.get(i));
                 }
 
-                System.out.println("\nCorrect. Tries used: " + usedTries + "/" + remainingTries);
+                System.out.println("\nCorrect. Tries used: " + usedTries + "/" + totalTries);
                 System.out.println("Letters used:" + used);
 
             }
