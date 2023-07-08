@@ -122,7 +122,7 @@ public class Hangman {
         }
         switch (choice) {
             case 1:
-                System.out.println("Good luck! Lets get started...\n");
+                System.out.printf("Good luck! Lets get started...\n");
                 game();
                 break;
             case 2:
